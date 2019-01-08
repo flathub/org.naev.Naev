@@ -1,7 +1,7 @@
 {
   "id": "org.naev.Naev",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "1.6",
+  "runtime-version": "18.08",
   "sdk": "org.freedesktop.Sdk",
   "command": "naev",
   "rename-icon": "naev",
@@ -10,6 +10,7 @@
   "finish-args": [
     "--socket=pulseaudio",
     "--socket=wayland",
+    "--share=ipc",
     "--socket=x11",
     "--device=dri"
   ],
@@ -65,4 +66,3 @@
     }
   ]
 }
-
