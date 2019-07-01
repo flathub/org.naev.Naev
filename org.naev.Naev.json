@@ -53,6 +53,10 @@
           "type": "archive",
           "url": "https://github.com/naev/naev/archive/naev-0.7.0.tar.gz",
           "sha256": "b995813ffb67d68a71d55184ac00513e86f048335635d0692d866e2f2107e170"
+        },
+        {
+          "type": "patch",
+          "path": "appdata.patch"
         }
       ],
       "post-install": [
