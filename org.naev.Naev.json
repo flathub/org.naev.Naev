@@ -1,12 +1,12 @@
 {
   "id": "org.naev.Naev",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "18.08",
+  "runtime-version": "20.08",
   "sdk": "org.freedesktop.Sdk",
   "command": "naev",
   "rename-icon": "naev",
-  "rename-desktop-file": "naev.desktop",
-  "rename-appdata-file": "naev.appdata.xml",
+  "rename-desktop-file": "org.naev.naev.desktop",
+  "rename-appdata-file": "org.naev.naev.metainfo.xml",
   "finish-args": [
     "--socket=pulseaudio",
     "--socket=wayland",
@@ -14,7 +14,8 @@
     "--device=dri"
   ],
   "modules": [
-    "shared-modules/glu/glu-9.0.0.json",
+    "shared-modules/glu/glu-9.json",
+    "shared-modules/intltool/intltool-0.51.json",
     {
       "name": "libzip",
       "buildsystem": "cmake-ninja",
@@ -22,8 +23,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://libzip.org/download/libzip-1.5.1.tar.xz",
-          "sha256": "04ea35b6956c7b3453f1ed3f3fe40e3ddae1f43931089124579e8384e79ed372"
+          "url": "https://libzip.org/download/libzip-1.7.3.tar.xz",
+          "sha256": "a60473ffdb7b4260c08bfa19c2ccea0438edac11193c3afbbb1f17fbcf6c6132"
         }
       ]
     },
@@ -51,8 +52,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/naev/naev/archive/naev-0.7.0.tar.gz",
-          "sha256": "b995813ffb67d68a71d55184ac00513e86f048335635d0692d866e2f2107e170"
+          "url": "https://github.com/naev/naev/releases/download/v0.8.2/naev-0.8.2-source.tar.gz",
+          "sha256": "e473aa44b8290e7ae03251d2a75f5e73e93b86edbbc94b2e684af09781ce0b31"
         },
         {
           "type": "patch",
