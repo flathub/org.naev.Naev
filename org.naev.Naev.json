@@ -30,7 +30,6 @@
     },
     {
       "name": "luajit",
-      "skip-arches": ["aarch64"],
       "no-autogen": true,
       "make-args": ["PREFIX=/app"],
       "make-install-args": ["PREFIX=/app"],
