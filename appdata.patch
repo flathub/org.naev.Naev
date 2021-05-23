@@ -1,8 +1,14 @@
 diff --git a/org.naev.naev.metainfo.xml b/org.naev.naev.metainfo.xml
-index 1c47db281..aceebbb7c 100644
+index 1c47db281..672d33168 100644
 --- a/org.naev.naev.metainfo.xml
 +++ b/org.naev.naev.metainfo.xml
-@@ -6,7 +6,8 @@
+@@ -1,12 +1,13 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <component type="desktop-application">
+-  <id>org.naev.naev</id>
++  <id>org.naev.naev.desktop</id>
+   
+   <name>Naev</name>
    <summary>2D action/rpg space trading combat game</summary>
    
    <metadata_license>CC0-1.0</metadata_license>
