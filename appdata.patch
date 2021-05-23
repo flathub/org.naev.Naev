@@ -1,5 +1,5 @@
 diff --git a/org.naev.naev.metainfo.xml b/org.naev.naev.metainfo.xml
-index 1c47db281..672d33168 100644
+index 1c47db281..8b2c81bb2 100644
 --- a/org.naev.naev.metainfo.xml
 +++ b/org.naev.naev.metainfo.xml
 @@ -1,12 +1,13 @@
@@ -18,12 +18,15 @@ index 1c47db281..672d33168 100644
    
    <recommends>
      <control>pointing</control>
-@@ -42,12 +43,20 @@
+@@ -41,13 +42,23 @@
+         <image>https://naev.org/imgs/screenshots/planet.png</image>
      </screenshot>
    </screenshots>
-   
--  <icon type="stock">naev</icon>
 -  
+-  <icon type="stock">naev</icon>
++
++  <url type="homepage">https://naev.org</url>
+   
    <categories>
      <category>Game</category>
      <category>AdventureGame</category>
