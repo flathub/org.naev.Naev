@@ -30,6 +30,7 @@
     },
     {
       "name": "luajit",
+      "skip-arches": ["aarch64"],
       "no-autogen": true,
       "make-args": ["PREFIX=/app"],
       "make-install-args": ["PREFIX=/app"],
@@ -50,9 +51,10 @@
       ],
       "sources": [
         {
-          "type": "archive",
-          "url": "https://github.com/naev/naev/releases/download/v0.8.2/naev-0.8.2-source.tar.gz",
-          "sha256": "e473aa44b8290e7ae03251d2a75f5e73e93b86edbbc94b2e684af09781ce0b31"
+          "type": "git",
+          "url": "https://github.com/naev/naev.git",
+          "tag": "v0.8.2",
+          "commit": "4e1b111598f46d6741c86f9697937746c8cf550d"
         },
         {
           "type": "patch",
