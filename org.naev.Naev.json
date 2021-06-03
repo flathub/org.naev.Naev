@@ -54,7 +54,8 @@
           "type": "git",
           "url": "https://github.com/naev/naev.git",
           "tag": "v0.8.2",
-          "commit": "4e1b111598f46d6741c86f9697937746c8cf550d"
+          "commit": "4e1b111598f46d6741c86f9697937746c8cf550d",
+          "disable-fsckobjects": true
         },
         {
           "type": "patch",
