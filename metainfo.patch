@@ -1,5 +1,5 @@
 --- a/org.naev.naev.metainfo.xml	2021-12-22 23:53:07.924279000 -0500
-+++ b/org.naev.naev.metainfo.xml	2021-12-24 04:16:26.834891548 -0500
++++ b/org.naev.naev.metainfo.xml	2021-12-24 04:41:29.462095392 -0500
 @@ -1,11 +1,10 @@
  <?xml version="1.0" encoding="UTF-8"?>
  <component type="desktop-application">
@@ -30,53 +30,53 @@
 -      <caption>A pirate kestrel in a firefight.</caption>
 -      <image>https://naev.org/imgs/screenshots/fight2.png</image>
 +      <caption>A pirate kestrel in a firefight</caption>
-+      <image>https://naev.org/imgs/screenshots_0.9.0/fight1.webp</image>
++      <image>https://naev.org/imgs/screenshots_0.9.0/png/fight1.png</image>
 +    </screenshot>
 +    <screenshot>
 +      <caption>A pirate kestrel attacking a ship</caption>
-+      <image>https://naev.org/imgs/screenshots_0.9.0/attack.webp</image>
++      <image>https://naev.org/imgs/screenshots_0.9.0/png/attack.png</image>
 +    </screenshot>
 +    <screenshot>
 +      <caption>A Gas Giant</caption>
-+      <image>https://naev.org/imgs/screenshots_0.9.0/gas_giant.webp</image>
++      <image>https://naev.org/imgs/screenshots_0.9.0/png/gas_giant.png</image>
 +    </screenshot>
 +    <screenshot>
 +      <caption>The equipment screen</caption>
-+      <image>https://naev.org/imgs/screenshots_0.9.0/equipment.webp</image>
++      <image>https://naev.org/imgs/screenshots_0.9.0/png/equipment.png</image>
 +    </screenshot>
 +    <screenshot>
 +      <caption>The shipyard screen</caption>
-+      <image>https://naev.org/imgs/screenshots_0.9.0/shipyard.webp</image>
++      <image>https://naev.org/imgs/screenshots_0.9.0/png/shipyard.png</image>
      </screenshot>
      <screenshot>
 -      <caption>The main menu.</caption>
 -      <image>https://naev.org/imgs/screenshots/menu.png</image>
 +      <caption>The mission screen</caption>
-+      <image>https://naev.org/imgs/screenshots_0.9.0/missions.webp</image>
++      <image>https://naev.org/imgs/screenshots_0.9.0/png/missions.png</image>
      </screenshot>
      <screenshot>
 -      <caption>The galaxy map.</caption>
 -      <image>https://naev.org/imgs/screenshots/map.png</image>
 +      <caption>Prepare to be scanned</caption>
-+      <image>https://naev.org/imgs/screenshots_0.9.0/scanned.webp</image>
++      <image>https://naev.org/imgs/screenshots_0.9.0/png/scanned.png</image>
      </screenshot>
      <screenshot>
 -      <caption>The outfit screen.</caption>
 -      <image>https://naev.org/imgs/screenshots/equip.png</image>
 +      <caption>Flying through a nebula</caption>
-+      <image>https://naev.org/imgs/screenshots_0.9.0/nebula.webp</image>
++      <image>https://naev.org/imgs/screenshots_0.9.0/png/nebula.png</image>
      </screenshot>
      <screenshot>
 -      <caption>A jumping ship.</caption>
 -      <image>https://naev.org/imgs/screenshots/jump.png</image>
 +      <caption>Flying stealthily through a system</caption>
-+      <image>https://naev.org/imgs/screenshots_0.9.0/stealth.webp</image>
++      <image>https://naev.org/imgs/screenshots_0.9.0/png/stealth.png</image>
      </screenshot>
      <screenshot>
 -      <caption>A ringed planet.</caption>
 -      <image>https://naev.org/imgs/screenshots/planet.png</image>
 +      <caption>Beware the chicken</caption>
-+      <image>https://naev.org/imgs/screenshots_0.9.0/minerva_station.webp</image>
++      <image>https://naev.org/imgs/screenshots_0.9.0/png/minerva_station.png</image>
      </screenshot>
    </screenshots>
  
