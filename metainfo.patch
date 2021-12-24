@@ -1,10 +1,10 @@
 --- a/org.naev.naev.metainfo.xml	2021-12-22 23:53:07.924279000 -0500
-+++ b/org.naev.naev.metainfo.xml	2021-12-24 04:41:29.462095392 -0500
++++ b/org.naev.naev.metainfo.xml	2021-12-24 15:08:59.488187659 -0500
 @@ -1,11 +1,10 @@
  <?xml version="1.0" encoding="UTF-8"?>
  <component type="desktop-application">
 -  <id>org.naev.naev</id>
-+  <id>org.naev.naev.desktop</id>
++  <id>org.naev.Naev</id>
  
    <name>Naev</name>
    <summary>2D action/rpg space trading combat game</summary>
@@ -23,7 +23,12 @@
      <release version="0.8.2" type="stable" date="2021-02-12">
        <url>https://naev.org/blarg/2021-02-12_0.8.2</url>
      </release>
-@@ -75,28 +77,44 @@
+@@ -71,32 +73,48 @@
+     </release>
+   </releases>
+ 
+-  <launchable type="desktop-id">org.naev.naev.desktop</launchable>
++  <launchable type="desktop-id">org.naev.Naev.desktop</launchable>
  
    <screenshots>
      <screenshot type="default">
