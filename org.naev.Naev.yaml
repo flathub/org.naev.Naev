@@ -9,8 +9,7 @@ rename-appdata-file: org.naev.naev.metainfo.xml
 finish-args:
   - --socket=pulseaudio
   - --socket=wayland
-  - --socket=system-bus
-  - --socket=x11
+  - --socket=fallback-x11
   - --device=dri
 
 modules:
