@@ -1,6 +1,11 @@
---- a/org.naev.naev.metainfo.xml	2021-12-23 03:08:59.773553372 -0500
-+++ b/org.naev.naev.metainfo.xml	2021-12-24 02:30:52.919782742 -0500
-@@ -5,7 +5,6 @@
+--- a/org.naev.naev.metainfo.xml	2021-12-22 23:53:07.924279000 -0500
++++ b/org.naev.naev.metainfo.xml	2021-12-24 03:45:34.552458421 -0500
+@@ -1,11 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <component type="desktop-application">
+-  <id>org.naev.naev</id>
++  <id>org.naev.naev.desktop</id>
+ 
    <name>Naev</name>
    <summary>2D action/rpg space trading combat game</summary>
    <summary xml:lang="de">2D-Action- und RPG-Weltraumhandels- und Kampfspiel</summary>
@@ -8,3 +13,13 @@
    <url type="homepage">https://naev.org</url>
    <url type="bugtracker">https://github.com/naev/naev/issues</url>
    <metadata_license>CC0-1.0</metadata_license>
+@@ -39,6 +38,9 @@
+   </categories>
+ 
+   <releases>
++    <release version="0.9.0" type="stable" date="2021-12-23">
++      <url>https://naev.org/blarg/2021-12-23_0.9.0</url>
++    </release>
+     <release version="0.8.2" type="stable" date="2021-02-12">
+       <url>https://naev.org/blarg/2021-02-12_0.8.2</url>
+     </release>
