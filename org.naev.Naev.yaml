@@ -1,0 +1,123 @@
+id: org.naev.Naev
+runtime: org.freedesktop.Platform
+runtime-version: '20.08'
+sdk: org.freedesktop.Sdk
+command: naev
+rename-icon: naev
+rename-desktop-file: org.naev.naev.desktop
+rename-appdata-file: org.naev.naev.metainfo.xml
+finish-args:
+  - --socket=pulseaudio
+  - --socket=wayland
+  - --socket=x11
+  - --device=dri
+
+modules:
+  - name: python3-pyyaml
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "pyyaml" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/36/2b/61d51a2c4f25ef062ae3f74576b01638bebad5e045f747ff12643df63844/PyYAML-6.0.tar.gz
+        sha256: 68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2
+
+  - name: libunibreak
+    no-autogen: false
+    make-install-args:
+      - PREFIX=/app
+    cleanup:
+      - /bin
+    sources:
+      - type: archive
+        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_5_0/libunibreak-5.0.tar.gz
+        sha256: 58f2fe4f9d9fc8277eb324075ba603479fa847a99a4b134ccb305ca42adf7158
+
+  - name: luajit
+    no-autogen: true
+    make-install-args:
+      - PREFIX=/app
+    cleanup:
+      - /bin
+      - /share
+    sources:
+      - type: git
+        url: https://github.com/LuaJIT/LuaJIT.git
+        commit: a91d0d9d3bba1a936669cfac3244509a0f2ac0e3
+
+  - name: physfs
+    buildsystem: cmake-ninja
+    cleanup:
+      - /bin
+    sources:
+      - type: archive
+        url: https://icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2
+        sha256: 304df76206d633df5360e738b138c94e82ccf086e50ba84f456d3f8432f9f863
+
+  - name: OpenBLAS
+    no-autogen: true
+    make-args:
+      - DYNAMIC_ARCH=1
+      - DYNAMIC_OLDER=1
+      - FC=gfortran
+      - TARGET=GENERIC
+      - USE_OPENMP=0
+    make-install-args:
+      - PREFIX=/app
+    cleanup:
+      - /bin
+    sources:
+      - type: archive
+        url: https://github.com/xianyi/OpenBLAS/releases/download/v0.3.19/OpenBLAS-0.3.19.tar.gz
+        sha256: 947f51bfe50c2a0749304fbe373e00e7637600b0a47b78a51382aeb30ca08562
+
+  - name: SuiteSparse
+    no-autogen: true
+    make-args:
+      - PREFIX=/app
+      - BLAS=-lopenblas
+      - LAPACK=
+      - library
+    make-install-args:
+      - PREFIX=/app
+      - BLAS=-lopenblas
+      - LAPACK=
+      - INSTALL_INCLUDE=/app/include/suitesparse
+      - INSTALL_LIB=/app/lib
+      - library
+    cleanup:
+      - /bin
+    sources:
+      - type: git
+        url: https://github.com/DrTimothyAldenDavis/SuiteSparse.git
+        tag: v5.10.1 
+        commit: 538273cfd53720a10e34a3d80d3779b607e1ac26
+      - type: patch
+        path: suitesparse-reduce-build.patch
+
+  - name: glpk
+    no-autogen: false
+    make-install-args:
+      - PREFIX=/app
+    cleanup:
+      - /bin
+    sources:
+      - type: archive
+        url: https://ftp.gnu.org/gnu/glpk/glpk-5.0.tar.gz
+        sha256: 4a1013eebb50f728fc601bdd833b0b2870333c3b3e5a816eeba921d95bec6f15
+
+  - name: naev
+    buildsystem: meson
+    config-opts:
+      - -Dbuildtype=release
+      - -Db_lto=true
+      - -Dauto_features=enabled
+      - -Ddocs_c=disabled
+      - -Ddocs_lua=disabled
+    sources:
+      - type: archive
+        url: https://github.com/naev/naev/releases/download/v0.9.0/naev-0.9.0-source.tar.xz
+        sha256: 28ecc8ae2e43edfd583b663ae88b87f39b953b886f7df5a12b8318e61bb59bc0
+      - type: patch
+        path: metainfo.patch
