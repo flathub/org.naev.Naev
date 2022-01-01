@@ -45,6 +45,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/LuaJIT/LuaJIT.git
+        branch: v2.1
         commit: a91d0d9d3bba1a936669cfac3244509a0f2ac0e3
 
   - name: physfs
@@ -81,7 +82,7 @@ modules:
           type: anitya
           project-id: 2540
           stable-only: true
-          url-template: https://github.com/xianyi/OpenBLAS/releases/download/v$version/OpenBLAS-v$version.tar.gz
+          url-template: https://github.com/xianyi/OpenBLAS/releases/download/v$version/OpenBLAS-$version.tar.gz
 
   - name: suitesparse
     no-autogen: true
