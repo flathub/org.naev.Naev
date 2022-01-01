@@ -55,8 +55,13 @@ modules:
       - type: archive
         url: https://icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2
         sha256: 304df76206d633df5360e738b138c94e82ccf086e50ba84f456d3f8432f9f863
+        x-checker-data:
+          type: anitya
+          project-id: 3631
+          stable-only: true
+          url-template: https://icculus.org/physfs/downloads/physfs-$version.tar.bz2
 
-  - name: OpenBLAS
+  - name: openblas
     no-autogen: true
     make-args:
       - DYNAMIC_ARCH=1
@@ -72,8 +77,13 @@ modules:
       - type: archive
         url: https://github.com/xianyi/OpenBLAS/releases/download/v0.3.19/OpenBLAS-0.3.19.tar.gz
         sha256: 947f51bfe50c2a0749304fbe373e00e7637600b0a47b78a51382aeb30ca08562
+        x-checker-data:
+          type: anitya
+          project-id: 2540
+          stable-only: true
+          url-template: https://github.com/xianyi/OpenBLAS/releases/download/v$version/OpenBLAS-v$version.tar.gz
 
-  - name: SuiteSparse
+  - name: suitesparse
     no-autogen: true
     make-args:
       - PREFIX=/app
@@ -90,10 +100,14 @@ modules:
     cleanup:
       - /bin
     sources:
-      - type: git
-        url: https://github.com/DrTimothyAldenDavis/SuiteSparse.git
-        tag: v5.10.1 
-        commit: 538273cfd53720a10e34a3d80d3779b607e1ac26
+      - type: archive
+        url: https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.10.1.tar.gz
+        sha256: acb4d1045f48a237e70294b950153e48dce5b5f9ca8190e86c2b8c54ce00a7ee
+        x-checker-data:
+          type: anitya
+          project-id: 4908
+          stable-only: true
+          url-template: https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v$version.tar.gz
       - type: patch
         path: suitesparse-reduce-build.patch
 
@@ -107,6 +121,11 @@ modules:
       - type: archive
         url: https://ftp.gnu.org/gnu/glpk/glpk-5.0.tar.gz
         sha256: 4a1013eebb50f728fc601bdd833b0b2870333c3b3e5a816eeba921d95bec6f15
+        x-checker-data:
+          type: anitya
+          project-id: 1183
+          stable-only: true
+          url-template: https://ftp.gnu.org/gnu/glpk/glpk-$version.tar.gz
 
   - name: naev
     buildsystem: meson
@@ -120,5 +139,10 @@ modules:
       - type: archive
         url: https://github.com/naev/naev/releases/download/v0.9.0/naev-0.9.0-source.tar.xz
         sha256: 28ecc8ae2e43edfd583b663ae88b87f39b953b886f7df5a12b8318e61bb59bc0
+        x-checker-data:
+          type: anitya
+          project-id: 5571
+          stable-only: true
+          url-template: https://github.com/naev/naev/releases/download/v$version/naev-$version-source.tar.xz
       - type: patch
         path: metainfo.patch
