@@ -3,9 +3,7 @@ runtime: org.freedesktop.Platform
 runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
 command: naev
-rename-icon: naev
-rename-desktop-file: org.naev.naev.desktop
-rename-appdata-file: org.naev.naev.metainfo.xml
+rename-appdata-file: org.naev.Naev.metainfo.xml
 finish-args:
   - --socket=pulseaudio
   - --socket=wayland
