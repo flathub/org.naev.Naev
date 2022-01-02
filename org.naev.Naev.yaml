@@ -3,9 +3,7 @@ runtime: org.freedesktop.Platform
 runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
 command: naev
-rename-icon: naev
-rename-desktop-file: org.naev.naev.desktop
-rename-appdata-file: org.naev.naev.metainfo.xml
+rename-appdata-file: org.naev.Naev.metainfo.xml
 finish-args:
   - --socket=pulseaudio
   - --socket=wayland
@@ -138,8 +136,8 @@ modules:
       - -Ddocs_lua=disabled
     sources:
       - type: archive
-        url: https://github.com/naev/naev/releases/download/v0.9.0/naev-0.9.0-source.tar.xz
-        sha256: 28ecc8ae2e43edfd583b663ae88b87f39b953b886f7df5a12b8318e61bb59bc0
+        url: https://github.com/naev/naev/releases/download/v0.9.1/naev-0.9.1-source.tar.xz
+        sha256: 08943474f68637edd0c28a87a7ed312a306d69786bd571d8480ae5d6015df1ec
         x-checker-data:
           type: anitya
           project-id: 5571
