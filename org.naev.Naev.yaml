@@ -137,7 +137,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/naev/naev/releases/download/v0.9.3/naev-0.9.3-source.tar.xz
-        sha256: 802692f6e24a507daef772cc506b1ca0fb5ff33f0a20e9f9a893dc69da83e688
+        sha256: ecf6cd8c3814d3065a04f775b0d07e15e7fe38c19a5a226f6ca64da0b0f9c7a9
         x-checker-data:
           type: anitya
           project-id: 5571
