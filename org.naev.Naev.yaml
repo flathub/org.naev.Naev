@@ -44,7 +44,7 @@ modules:
       - type: git
         url: https://github.com/LuaJIT/LuaJIT.git
         branch: v2.1
-        commit: 34a62c7f738347e4981e7882bbf4f7a4f706dc5d
+        commit: f2b37f51f69ba7e9f8defd05e5aca648121f0fe6
 
   - name: physfs
     buildsystem: cmake-ninja
