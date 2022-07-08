@@ -45,20 +45,8 @@ modules:
         url: https://github.com/LuaJIT/LuaJIT.git
         branch: v2.1
         commit: 0065cff7e0222c234b75a71e72b8883df5d000c2
-
-  - name: physfs
-    buildsystem: cmake-ninja
-    cleanup:
-      - /bin
-    sources:
-      - type: archive
-        url: https://icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2
-        sha256: 304df76206d633df5360e738b138c94e82ccf086e50ba84f456d3f8432f9f863
-        x-checker-data:
-          type: anitya
-          project-id: 3631
-          stable-only: true
-          url-template: https://icculus.org/physfs/downloads/physfs-$version.tar.bz2
+        
+  - shared-modules/physfs/physfs.json
 
   - name: openblas
     no-autogen: true
