@@ -123,13 +123,12 @@ modules:
       - -Ddocs_c=disabled
       - -Ddocs_lua=disabled
     sources:
-      - type: archive
-        url: https://github.com/naev/naev/releases/download/v0.9.3/naev-0.9.3-source.tar.xz
-        sha256: ecf6cd8c3814d3065a04f775b0d07e15e7fe38c19a5a226f6ca64da0b0f9c7a9
+      - type: git
+        url: https://github.com/naev/naev.git
+        tag: v0.9.3
+        commit: 6f4495711232a757dac4ad4f06cb7fcfcb72f9dc
         x-checker-data:
-          type: anitya
-          project-id: 5571
-          stable-only: true
-          url-template: https://github.com/naev/naev/releases/download/v$version/naev-$version-source.tar.xz
+          type: git
+          tag-pattern: '^v([0-9.]+)$'
       - type: patch
         path: metainfo.patch
