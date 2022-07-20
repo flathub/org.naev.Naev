@@ -125,8 +125,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/naev/naev.git
-        tag: v0.9.3
-        commit: 6f4495711232a757dac4ad4f06cb7fcfcb72f9dc
+        tag: v0.9.4
+        commit: c8910b40b3840d1f04150474da151380bc82d322
         x-checker-data:
           type: git
           tag-pattern: ^v([0-9.]+)$
