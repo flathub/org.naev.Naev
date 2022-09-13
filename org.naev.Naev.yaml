@@ -48,7 +48,7 @@ modules:
       - type: git
         url: https://github.com/LuaJIT/LuaJIT.git
         branch: v2.1
-        commit: e19db605129ea755b325e4396f58141dbdfd23a0
+        commit: d13610a845626c8c3dc34b4c32b64763e03d5c54
 
   - shared-modules/physfs/physfs.json
 
