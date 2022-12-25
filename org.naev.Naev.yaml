@@ -91,8 +91,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.13.0.tar.gz
-        sha256: 59c6ca2959623f0c69226cf9afb9a018d12a37fab3a8869db5f6d7f83b6b147d
+        url: https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v6.0.3.tar.gz
+        sha256: 7111b505c1207f6f4bd0be9740d0b2897e1146b845d73787df07901b4f5c1fb7
         x-checker-data:
           type: anitya
           project-id: 4908
@@ -128,8 +128,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/naev/naev.git
-        tag: v0.9.4
-        commit: c8910b40b3840d1f04150474da151380bc82d322
+        tag: v0.10.0
+        commit: 0bf1e11bcbcf7ba178bdc83e0ecd23205deabf31
         x-checker-data:
           type: git
           tag-pattern: ^v([0-9.]+)$
