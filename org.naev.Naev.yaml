@@ -62,7 +62,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/LuaJIT/LuaJIT.git
-        commit: 6c4826f12c4d33b8b978004bc681eb1eef2be977
+        commit: 564147f518af5a5d8985d9e09fc3a768231f4e75
 
   - shared-modules/physfs/physfs.json
 
@@ -136,12 +136,13 @@ modules:
       - -Ddocs_c=disabled
       - -Ddocs_lua=disabled
     sources:
-      - type: git
-        url: https://github.com/naev/naev.git
-        tag: v0.10.1
-        commit: be64b408383f9c1507f0657a15d4aa7a3f34084b
+      - type: archive
+        url: https://github.com/naev/naev/releases/download/v0.10.1/naev-0.10.1-source.tar.xz
+        sha256: 9efd2ca54179741c793dbe690aacb2bf79d4accbf4c7632d7713e0ea4d3d449f
         x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
+          type: anitya
+          project-id: 5571
+          stable-only: true
+          url-template: https://github.com/naev/naev/releases/download/v$version/naev-$version-source.tar.xz
       - type: patch
         path: metainfo.patch
