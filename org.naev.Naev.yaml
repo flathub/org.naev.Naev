@@ -37,6 +37,21 @@ modules:
         url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_5_0/libunibreak-5.0.tar.gz
         sha256: 58f2fe4f9d9fc8277eb324075ba603479fa847a99a4b134ccb305ca42adf7158
 
+  - name: enet
+    buildsystem: autotools
+    sources:
+      - type: git
+        url: https://github.com/lsalzman/enet.git
+        tag: v1.3.17
+        commit: e0e7045b7e056b454b5093cb34df49dc4cee0bee
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+      - type: script
+        dest-filename: autogen.sh
+        commands:
+          - autoreconf -ifv
+
   - name: luajit
     no-autogen: true
     make-install-args:
