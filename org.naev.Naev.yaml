@@ -52,18 +52,7 @@ modules:
         commands:
           - autoreconf -ifv
 
-  - name: luajit
-    no-autogen: true
-    make-install-args:
-      - PREFIX=/app
-    cleanup:
-      - /bin
-      - /share
-    sources:
-      - type: git
-        url: https://github.com/LuaJIT/LuaJIT.git
-        commit: 564147f518af5a5d8985d9e09fc3a768231f4e75
-
+  - shared-modules/luajit/luajit.json
   - shared-modules/physfs/physfs.json
 
   - name: openblas
