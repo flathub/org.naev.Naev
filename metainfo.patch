@@ -1,10 +1,11 @@
---- a/org.naev.Naev.metainfo.xml	2022-01-01 23:26:56.000420800 -0500
-+++ b/org.naev.Naev.metainfo.xml	2022-01-02 09:48:52.374649513 -0500
-@@ -6,7 +6,6 @@
+--- a/org.naev.Naev.metainfo.xml  2023-04-29 22:07:47.096217100 -0400
++++ b/org.naev.Naev.metainfo.xml 2023-04-29 22:45:59.265878372 -0400
+@@ -6,7 +6,7 @@
    <summary>2D action/rpg space trading combat game</summary>
    <summary xml:lang="de">2D-Action- und RPG-Weltraumhandels- und Kampfspiel</summary>
    <developer_name>Naev DevTeam</developer_name>
 -  <icon type="stock">org.naev.Naev</icon>
++  <icon type="local">/app/share/icons/hicolor/128x128/apps/org.naev.Naev.png</icon>
    <url type="homepage">https://naev.org</url>
    <url type="bugtracker">https://github.com/naev/naev/issues</url>
    <metadata_license>CC0-1.0</metadata_license>
