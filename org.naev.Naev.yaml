@@ -135,3 +135,5 @@ modules:
           url-template: https://github.com/naev/naev/releases/download/v$version/naev-$version-source.tar.xz
       - type: patch
         path: metainfo.patch
+      - type: patch
+        path: disable_ascli.patch
