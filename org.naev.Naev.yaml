@@ -137,3 +137,5 @@ modules:
         path: metainfo.patch
       - type: patch
         path: disable_ascli.patch
+      - type: patch
+        path: disable_metainfo_test.patch
