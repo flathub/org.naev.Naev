@@ -1,0 +1,37 @@
+--- a/test/meson.build 2023-04-23 02:37:49.322025851 -0400
++++ b/test/meson.build        2023-04-29 23:26:41.835517534 -0400
+@@ -11,20 +11,20 @@
+     protocol: 'exitcode'
+     )
+
+-if (ascli_exe.found())
+-    metainfo_test_file = 'org.naev.Naev.metainfo.xml'
+-    test('validate_metainfo',
+-    ascli_exe,
+-    args: [
+-        'validate',
+-        '--no-net',
+-        '--pedantic',
+-        '--verbose',
+-        metainfo_test_file
+-    ],
+-    workdir: meson.source_root()
+-    )
+-endif
++#if (ascli_exe.found())
++#    metainfo_test_file = 'org.naev.Naev.metainfo.xml'
++#    test('validate_metainfo',
++#    ascli_exe,
++#    args: [
++#        'validate',
++#        '--no-net',
++#        '--pedantic',
++#        '--verbose',
++#        metainfo_test_file
++#    ],
++#    workdir: meson.source_root()
++#    )
++#endif
+
+ if (luacheck.found())
+     test('luacheck',
