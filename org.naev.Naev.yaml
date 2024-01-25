@@ -126,8 +126,8 @@ modules:
       - -Ddocs_lua=disabled
     sources:
       - type: archive
-        url: https://github.com/naev/naev/releases/download/v0.11.2/naev-0.11.2-source.tar.xz
-        sha256: 337f4224b591bfec06cf2734468b41abd30e29cb46ffa8a34f60c8f49b7c8d44
+        url: https://github.com/naev/naev/releases/download/v0.11.3/naev-0.11.3-source.tar.xz
+        sha256: e918bc6c5b7a5096e8c80a936e7231644bdddae35cc7a6291ccc4c7f759a632e
         x-checker-data:
           type: anitya
           project-id: 5571
