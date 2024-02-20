@@ -34,8 +34,14 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_5_0/libunibreak-5.0.tar.gz
-        sha256: 58f2fe4f9d9fc8277eb324075ba603479fa847a99a4b134ccb305ca42adf7158
+        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_5_1/libunibreak-5.1.tar.gz
+        sha512: c7762c0a5212a69de69fde7dcb3281e0d642a27da881337a6b0f71fac84fd097940dc92059d3daaf91dd21ae8b77d835432da058371958d0eb15af30077e2fba
+        strip-components: 0
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/adah1972/libunibreak/releases/latest
+          version-query: .tag_name
+          url-query: .assets[] | select(.name|endswith(".tar.gz")) | .browser_download_url
 
   - name: enet
     buildsystem: autotools
@@ -69,13 +75,14 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://github.com/xianyi/OpenBLAS/releases/download/v0.3.26/OpenBLAS-0.3.26.tar.gz
-        sha256: 4e6e4f5cb14c209262e33e6816d70221a2fe49eb69eaf0a06f065598ac602c68
+        url: https://github.com/OpenMathLib/OpenBLAS/releases/download/v0.3.26/OpenBLAS-0.3.26.tar.gz
+        sha512: 01d3a536fbfa62f276fd6b1ad0e218fb3d91f41545fc83ddc74979fa26372d8389f0baa20334badfe0adacd77bd944c50a47ac920577373fcc1d495553084373
+        strip-components: 0
         x-checker-data:
-          type: anitya
-          project-id: 2540
-          stable-only: true
-          url-template: https://github.com/xianyi/OpenBLAS/releases/download/v$version/OpenBLAS-$version.tar.gz
+          type: json
+          url: https://api.github.com/repos/OpenMathLib/OpenBLAS/releases/latest
+          version-query: .tag_name
+          url-query: .assets[] | select(.name|endswith(".tar.gz")) | .browser_download_url
 
   - name: suitesparse
     no-autogen: true
@@ -96,7 +103,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.13.0.tar.gz
-        sha256: 59c6ca2959623f0c69226cf9afb9a018d12a37fab3a8869db5f6d7f83b6b147d
+        sha512: d053dd3d2f2b670fb32cc90712cff7c4ca0a8b6f99be87f921c07be49a3f8a9904575497ae1d396f0d97895f03a442094582264d59f51c5f2708fddb57adef6c
       - type: patch
         path: suitesparse-reduce-build.patch
 
@@ -109,7 +116,7 @@ modules:
     sources:
       - type: archive
         url: https://ftp.gnu.org/gnu/glpk/glpk-5.0.tar.gz
-        sha256: 4a1013eebb50f728fc601bdd833b0b2870333c3b3e5a816eeba921d95bec6f15
+        sha512: 4e92195fa058c707146f2690f3a38b46c33add948c852f67659ca005a6aa980bbf97be96528b0f8391690facb880ac2126cd60198c6c175e7f3f06cca7e29f9d
         x-checker-data:
           type: anitya
           project-id: 1183
@@ -127,12 +134,13 @@ modules:
     sources:
       - type: archive
         url: https://github.com/naev/naev/releases/download/v0.11.3/naev-0.11.3-source.tar.xz
-        sha256: e918bc6c5b7a5096e8c80a936e7231644bdddae35cc7a6291ccc4c7f759a632e
+        sha512: 25f33cd78f83c9d6fe6ae3f6464e45a9086d7e2e033671b866d9e3d47a2cfff2d9e64dd453846de4e1fcf3384a57361bcf026a01eb39e9cf3b620be46b0d3f0b
+        strip-components: 0
         x-checker-data:
-          type: anitya
-          project-id: 5571
-          stable-only: true
-          url-template: https://github.com/naev/naev/releases/download/v$version/naev-$version-source.tar.xz
+          type: json
+          url: https://api.github.com/repos/naev/naev/releases/latest
+          version-query: .tag_name
+          url-query: .assets[] | select(.name|endswith("-source.tar.xz")) | .browser_download_url
       - type: patch
         path: metainfo.patch
       - type: patch
