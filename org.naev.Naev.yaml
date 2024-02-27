@@ -37,8 +37,8 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_5_1/libunibreak-5.1.tar.gz
-        sha512: c7762c0a5212a69de69fde7dcb3281e0d642a27da881337a6b0f71fac84fd097940dc92059d3daaf91dd21ae8b77d835432da058371958d0eb15af30077e2fba
+        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_6_0/libunibreak-6.0.tar.gz
+        sha512: ca5a2b32a0d85e8a3ec6f414ff62a276f350256d5849fe39af1b790a61347302b63007b31c4ce85e66894ae99b8a5dca304974a3a322e10cd0b75fb3518cb9c2
         x-checker-data:
           type: json
           url: https://api.github.com/repos/adah1972/libunibreak/releases/latest
