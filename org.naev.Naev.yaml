@@ -33,7 +33,10 @@ modules:
     cleanup:
       - /bin
       - /include
+      - /lib/debug
       - /lib/pkgconfig
+      - /lib/*.a
+      - /lib/*.la
       - /share/man
     sources:
       - type: archive
@@ -50,7 +53,10 @@ modules:
     cleanup:
       - /bin
       - /include
+      - /lib/debug
       - /lib/pkgconfig
+      - /lib/*.a
+      - /lib/*.la
       - /share/man
     sources:
       - type: git
@@ -69,19 +75,23 @@ modules:
   - shared-modules/physfs/physfs.json
 
   - name: openblas
-    no-autogen: true
-    make-args:
-      - DYNAMIC_ARCH=1
-      - DYNAMIC_OLDER=1
-      - FC=gfortran
-      - TARGET=GENERIC
-      - USE_OPENMP=0
-    make-install-args:
-      - PREFIX=/app
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_INSTALL_PREFIX=/app
+      - -DDYNAMIC_ARCH=OFF
+      - -DDYNAMIC_OLDER=OFF
+      - -DBUILD_STATIC_LIBS=OFF
+      - -DBUILD_SHARED_LIBS=ON
+      - -DBUILD_WITHOUT_LAPACK=OFF
+      - -DC_LAPACK=ON
+      - -DUSE_OPENMP=ON
     cleanup:
       - /bin
       - /include
       - /lib/cmake
+      - /lib/debug
+      - /lib/*.a
+      - /lib/*.la
       - /lib/pkgconfig
       - /share/man
     sources:
@@ -95,14 +105,20 @@ modules:
           url-query: .assets[] | select(.name|endswith(".tar.gz")) | .browser_download_url
 
   - name: suitesparse
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_INSTALL_PREFIX=/app
-      - -DSUITESPARSE_ENABLE_PROJECTS=cholmod;cxsparse
+      - -DBUILD_STATIC_LIBS=OFF
+      - -DBUILD_SHARED_LIBS=ON
+      - -DSUITESPARSE_USE_64BIT_BLAS=ON
+      - -DSUITESPARSE_ENABLE_PROJECTS=cholmod;amd;colamd;cxsparse
     cleanup:
       - /bin
       - /include
       - /lib/cmake
+      - /lib/debug
+      - /lib/*.a
+      - /lib/*.la
       - /lib/pkgconfig
       - /share/man
     sources:
@@ -121,7 +137,10 @@ modules:
     cleanup:
       - /bin
       - /include
+      - /lib/debug
       - /lib/pkgconfig
+      - /lib/*.a
+      - /lib/*.la
       - /share/man
     sources:
       - type: archive
@@ -141,6 +160,8 @@ modules:
       - -Dauto_features=enabled
       - -Ddocs_c=disabled
       - -Ddocs_lua=disabled
+    cleanup:
+      - /lib/debug
     sources:
       - type: archive
         url: https://github.com/naev/naev/releases/download/v0.11.3/naev-0.11.3-source.tar.xz
