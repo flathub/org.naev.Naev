@@ -164,8 +164,8 @@ modules:
       - /lib/debug
     sources:
       - type: archive
-        url: https://github.com/naev/naev/releases/download/v0.11.4/naev-0.11.4-source.tar.xz
-        sha512: a988ebc1792b7108334e1423a544087f6509fa805bf3a17b70a6206326b783179783690a40f432b5cd262ecfe723cad1fa2755634611d324d4d2bf3d75f25143
+        url: https://github.com/naev/naev/releases/download/v0.11.5/naev-0.11.5-source.tar.xz
+        sha512: de4896f705d020ab2f2c3ffd6c16599365caa8b87dbca6288f9dbcec114e97ee775a03819b958fdd697b1232295c6f6339a89e1b5c6671942efe26ec2d439755
         x-checker-data:
           type: json
           url: https://api.github.com/repos/naev/naev/releases/latest
