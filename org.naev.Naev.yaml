@@ -96,8 +96,8 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://github.com/OpenMathLib/OpenBLAS/releases/download/v0.3.27/OpenBLAS-0.3.27.tar.gz
-        sha512: 4accc5282244946157b7940211181e011940154ff47855702c68f57a0af2fa5a306f49e47b8c22c02eeff61760c6c220465f05a316a33ee3265bfce65ca4cb84
+        url: https://github.com/OpenMathLib/OpenBLAS/releases/download/v0.3.28/OpenBLAS-0.3.28.tar.gz
+        sha512: 358301c8a60bedf920c07a110c772feb639e52412bd783789741fd2fd0686aac97e6b17ebcdf01ce48a2a15841058f82df0fee551af952f6e70b58140c055133
         x-checker-data:
           type: json
           url: https://api.github.com/repos/OpenMathLib/OpenBLAS/releases/latest
