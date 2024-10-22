@@ -124,8 +124,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/DrTimothyAldenDavis/SuiteSparse.git
-        tag: v7.8.2
-        commit: c8c3a9de1c8eef54da5ff19fd0bcf7ca6e8bc9de
+        tag: v7.8.3
+        commit: d3c4926d2c47fd6ae558e898bfc072ade210a2a1
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
