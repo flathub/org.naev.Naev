@@ -1,2 +1,7 @@
-/.flatpak-builder
-/build-dir
+# Directories
+.flatpak-builder/
+_build/
+_repo/
+
+# Loose Files
+org.naev.Naev.flatpak
