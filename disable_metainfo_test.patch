@@ -1,9 +1,9 @@
---- a/test/meson.build 2023-04-23 02:37:49.322025851 -0400
-+++ b/test/meson.build        2023-04-29 23:26:41.835517534 -0400
-@@ -11,20 +11,20 @@
+--- a/test/meson.build	2024-11-14 08:46:37.915088878 -0500
++++ b/test/meson.build	2024-12-23 14:40:53.549304381 -0500
+@@ -11,21 +11,6 @@
      protocol: 'exitcode'
      )
-
+ 
 -if (ascli_exe.found())
 -    metainfo_test_file = 'org.naev.Naev.metainfo.xml'
 -    test('validate_metainfo',
@@ -15,23 +15,10 @@
 -        '--verbose',
 -        metainfo_test_file
 -    ],
--    workdir: meson.source_root()
+-    workdir: meson.project_source_root()
 -    )
 -endif
-+#if (ascli_exe.found())
-+#    metainfo_test_file = 'org.naev.Naev.metainfo.xml'
-+#    test('validate_metainfo',
-+#    ascli_exe,
-+#    args: [
-+#        'validate',
-+#        '--no-net',
-+#        '--pedantic',
-+#        '--verbose',
-+#        metainfo_test_file
-+#    ],
-+#    workdir: meson.source_root()
-+#    )
-+#endif
-
+-
  if (luacheck.found())
-     test('luacheck',
+     env = environment()
+     env.set( 'LUA_PATH', meson.project_source_root() / '?.lua;;' )
