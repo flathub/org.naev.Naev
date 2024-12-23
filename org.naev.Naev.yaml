@@ -1,6 +1,6 @@
 id: org.naev.Naev
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: naev
 rename-appdata-file: org.naev.Naev.metainfo.xml
@@ -12,41 +12,30 @@ finish-args:
   - --share=ipc
 
 modules:
-  - name: python3-pyyaml
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "pyyaml" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/54/ed/79a089b6be93607fa5cdaedf301d7dfb23af5f25c398d5ead2525b063e17/pyyaml-6.0.2.tar.gz
-        sha256: d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e
-        x-checker-data:
-          type: pypi
-          name: PyYAML
-          packagetype: sdist
-
-  - name: libunibreak
-    no-autogen: false
-    make-install-args:
-      - PREFIX=/app
+  - name: cmark
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_INSTALL_PREFIX=/app
+      - -DBUILD_STATIC_LIBS=OFF
+      - -DBUILD_SHARED_LIBS=ON
     cleanup:
       - /bin
       - /include
+      - /lib/cmake
       - /lib/debug
-      - /lib/pkgconfig
       - /lib/*.a
       - /lib/*.la
+      - /lib/pkgconfig
       - /share/man
     sources:
-      - type: archive
-        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_6_1/libunibreak-6.1.tar.gz
-        sha512: 8ffde29a9b90ddcbfabb61d7302ffe3b17473cd6d30fe1a4403d857e6191291d7e7a6f23bde58654155ed95f4a0f31e082cdf424a82da46722a811291ef38c2f
+      - type: git
+        url: https://github.com/commonmark/cmark.git
+        tag: 0.31.1
+        commit: bb3678d7a73cb02d35c8876ecd097072636200a8
         x-checker-data:
-          type: json
-          url: https://api.github.com/repos/adah1972/libunibreak/releases/latest
-          version-query: .tag_name
-          url-query: .assets[] | select(.name|endswith(".tar.gz")) | .browser_download_url
+          type: git
+          tag-pattern: ^([\d.]+)$
 
   - name: enet
     buildsystem: autotools
@@ -71,8 +60,76 @@ modules:
         commands:
           - autoreconf -ifv
 
+  - name: glpk
+    no-autogen: false
+    make-install-args:
+      - PREFIX=/app
+    cleanup:
+      - /bin
+      - /include
+      - /lib/debug
+      - /lib/pkgconfig
+      - /lib/*.a
+      - /lib/*.la
+      - /share/man
+    sources:
+      - type: archive
+        url: https://ftp.gnu.org/gnu/glpk/glpk-5.0.tar.gz
+        sha512: 4e92195fa058c707146f2690f3a38b46c33add948c852f67659ca005a6aa980bbf97be96528b0f8391690facb880ac2126cd60198c6c175e7f3f06cca7e29f9d
+        x-checker-data:
+          type: anitya
+          project-id: 1183
+          stable-only: true
+          url-template: https://ftp.gnu.org/gnu/glpk/glpk-$version.tar.gz
+
+  - name: libunibreak
+    no-autogen: false
+    make-install-args:
+      - PREFIX=/app
+    cleanup:
+      - /bin
+      - /include
+      - /lib/debug
+      - /lib/pkgconfig
+      - /lib/*.a
+      - /lib/*.la
+      - /share/man
+    sources:
+      - type: archive
+        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_6_1/libunibreak-6.1.tar.gz
+        sha512: 8ffde29a9b90ddcbfabb61d7302ffe3b17473cd6d30fe1a4403d857e6191291d7e7a6f23bde58654155ed95f4a0f31e082cdf424a82da46722a811291ef38c2f
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/adah1972/libunibreak/releases/latest
+          version-query: .tag_name
+          url-query: .assets[] | select(.name|endswith(".tar.gz")) | .browser_download_url
+
   - shared-modules/luajit/luajit.json
-  - shared-modules/physfs/physfs.json
+
+  - name: nativefiledialog-extended
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_INSTALL_PREFIX=/app
+      - -DBUILD_STATIC_LIBS=ON
+      - -DBUILD_SHARED_LIBS=OFF
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/debug
+      - /lib/*.a
+      - /lib/*.la
+      - /lib/pkgconfig
+      - /share/man
+    sources:
+      - type: git
+        url: https://github.com/btzy/nativefiledialog-extended.git
+        tag: v1.2.1
+        commit: 86d5f2005fe1c00747348a12070fec493ea2407e
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
 
   - name: openblas
     buildsystem: cmake-ninja
@@ -104,6 +161,22 @@ modules:
           version-query: .tag_name
           url-query: .assets[] | select(.name|endswith(".tar.gz")) | .browser_download_url
 
+  - shared-modules/physfs/physfs.json
+
+  - name: python3-pyyaml
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "pyyaml" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/54/ed/79a089b6be93607fa5cdaedf301d7dfb23af5f25c398d5ead2525b063e17/pyyaml-6.0.2.tar.gz
+        sha256: d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e
+        x-checker-data:
+          type: pypi
+          name: PyYAML
+          packagetype: sdist
+
   - name: suitesparse
     buildsystem: cmake-ninja
     config-opts:
@@ -130,28 +203,6 @@ modules:
           type: git
           tag-pattern: ^v([\d.]+)$
 
-  - name: glpk
-    no-autogen: false
-    make-install-args:
-      - PREFIX=/app
-    cleanup:
-      - /bin
-      - /include
-      - /lib/debug
-      - /lib/pkgconfig
-      - /lib/*.a
-      - /lib/*.la
-      - /share/man
-    sources:
-      - type: archive
-        url: https://ftp.gnu.org/gnu/glpk/glpk-5.0.tar.gz
-        sha512: 4e92195fa058c707146f2690f3a38b46c33add948c852f67659ca005a6aa980bbf97be96528b0f8391690facb880ac2126cd60198c6c175e7f3f06cca7e29f9d
-        x-checker-data:
-          type: anitya
-          project-id: 1183
-          stable-only: true
-          url-template: https://ftp.gnu.org/gnu/glpk/glpk-$version.tar.gz
-
   - name: naev
     buildsystem: meson
     config-opts:
@@ -164,8 +215,8 @@ modules:
       - /lib/debug
     sources:
       - type: archive
-        url: https://github.com/naev/naev/releases/download/v0.11.5/naev-0.11.5-source.tar.xz
-        sha512: de4896f705d020ab2f2c3ffd6c16599365caa8b87dbca6288f9dbcec114e97ee775a03819b958fdd697b1232295c6f6339a89e1b5c6671942efe26ec2d439755
+        url: https://github.com/naev/naev/releases/download/v0.12.0/naev-0.12.0-source.tar.xz
+        sha512: 1e0700f4ce58740490173f0b2a7e460b43fb269ebeeae54ffc3c8bada73b72fc0860083d2987868dee01b60ec110e7f39099b60367654d4bec04bf9b88ca57e2
         x-checker-data:
           type: json
           url: https://api.github.com/repos/naev/naev/releases/latest
@@ -177,3 +228,5 @@ modules:
         path: disable_ascli.patch
       - type: patch
         path: disable_metainfo_test.patch
+      - type: patch
+        path: nfd_build_fix.patch
