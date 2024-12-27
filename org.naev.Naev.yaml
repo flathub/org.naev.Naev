@@ -228,5 +228,3 @@ modules:
         path: disable_ascli.patch
       - type: patch
         path: disable_metainfo_test.patch
-      - type: patch
-        path: nfd_build_fix.patch
