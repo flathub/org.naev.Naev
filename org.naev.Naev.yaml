@@ -197,8 +197,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/DrTimothyAldenDavis/SuiteSparse.git
-        tag: v7.10.3
-        commit: 1786fef52d4bea8fadb9f775f0fd5af459a14293
+        tag: v7.11.0
+        commit: b35a1f9318f4bd42085f4b5ea56f29c89d342d4d
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -215,11 +215,11 @@ modules:
       - /lib/debug
     sources:
       - type: archive
-        url: https://github.com/naev/naev/releases/download/v0.12.6/naev-0.12.6-source.tar.xz
+        url: https://codeberg.org/naev/naev/releases/download/v0.12.6/naev-0.12.6-source.tar.xz
         sha512: 4d28e9caa26e4c6328b33f17e7c101bc80c6f30540f8d148e7441a9193a3a1a7ee647d501acde7b72b60a9e60ef66774363fdeacefa7c2b7522e278ed44017d2
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/naev/naev/releases/latest
+          url: https://codeberg.org/api/v1/repos/naev/naev/releases/latest
           version-query: .tag_name
           url-query: .assets[] | select(.name|endswith("-source.tar.xz")) | .browser_download_url
       - type: patch
