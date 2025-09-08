@@ -219,7 +219,7 @@ modules:
         sha512: 4d28e9caa26e4c6328b33f17e7c101bc80c6f30540f8d148e7441a9193a3a1a7ee647d501acde7b72b60a9e60ef66774363fdeacefa7c2b7522e278ed44017d2
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/naev/naev/releases/latest
+          url: https://codeberg.org/api/v1/repos/naev/naev/releases/latest
           version-query: .tag_name
           url-query: .assets[] | select(.name|endswith("-source.tar.xz")) | .browser_download_url
       - type: patch
