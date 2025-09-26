@@ -27,8 +27,8 @@ check_command "flatpak-builder"
 
 # Define required Flatpak packages
 REQUIRED_FLATPAK_PACKAGES=(
-    "org.freedesktop.Platform//24.08"
-    "org.freedesktop.Sdk//24.08"
+    "org.freedesktop.Platform//25.08"
+    "org.freedesktop.Sdk//25.08"
 )
 
 # Function to check if a Flatpak package is installed

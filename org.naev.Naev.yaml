@@ -1,6 +1,6 @@
 id: org.naev.Naev
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: naev
 rename-appdata-file: org.naev.Naev.metainfo.xml
@@ -178,6 +178,8 @@ modules:
           type: pypi
           name: PyYAML
           packagetype: sdist
+
+  - shared-modules/SDL2/SDL2_image.json
 
   - name: suitesparse
     buildsystem: cmake-ninja
