@@ -1,6 +1,6 @@
 id: org.naev.Naev
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: naev
 rename-appdata-file: org.naev.Naev.metainfo.xml
@@ -74,13 +74,15 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://ftp.gnu.org/gnu/glpk/glpk-5.0.tar.gz
+        url: https://ftpmirror.gnu.org/gnu/glpk/glpk-5.0.tar.gz
         sha512: 4e92195fa058c707146f2690f3a38b46c33add948c852f67659ca005a6aa980bbf97be96528b0f8391690facb880ac2126cd60198c6c175e7f3f06cca7e29f9d
         x-checker-data:
           type: anitya
           project-id: 1183
           stable-only: true
-          url-template: https://ftp.gnu.org/gnu/glpk/glpk-$version.tar.gz
+          url-template: https://ftpmirror.gnu.org/gnu/glpk/glpk-$version.tar.gz
+      - type: patch
+        path: minisat-c23-fix.patch
 
   - name: libunibreak
     no-autogen: false
@@ -161,7 +163,7 @@ modules:
           version-query: .tag_name
           url-query: .assets[] | select(.name|endswith(".tar.gz")) | .browser_download_url
 
-  - shared-modules/physfs/physfs.json
+  - physfs.json
 
   - name: python3-pyyaml
     buildsystem: simple
@@ -176,6 +178,8 @@ modules:
           type: pypi
           name: PyYAML
           packagetype: sdist
+
+  - shared-modules/SDL2/SDL2_image.json
 
   - name: suitesparse
     buildsystem: cmake-ninja
