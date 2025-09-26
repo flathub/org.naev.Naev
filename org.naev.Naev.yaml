@@ -81,6 +81,8 @@ modules:
           project-id: 1183
           stable-only: true
           url-template: https://ftpmirror.gnu.org/gnu/glpk/glpk-$version.tar.gz
+      - type: patch
+        path: minisat-c23-fix.patch
 
   - name: libunibreak
     no-autogen: false
