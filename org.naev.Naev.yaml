@@ -163,7 +163,7 @@ modules:
           version-query: .tag_name
           url-query: .assets[] | select(.name|endswith(".tar.gz")) | .browser_download_url
 
-  - physfs.json
+  - shared-modules/physfs/physfs.json
 
   - name: python3-pyyaml
     buildsystem: simple
