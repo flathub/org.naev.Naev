@@ -16,7 +16,7 @@
 +  <url type="bugtracker">https://codeberg.org/naev/naev/issues</url>
 +  <url type="contribute">https://codeberg.org/naev/naev</url>
 +  <url type="contact">https://naev.org/contact/</url>
-+  <url type="translate">https://hosted.weblate.org/projects/naev/</url>
++  <url type="translate">https://translate.codeberg.org/projects/naev/</url>
 +  <url type="vcs-browser">https://codeberg.org/naev/naev</url>
    <metadata_license>CC0-1.0</metadata_license>
    <project_license>GPL-3.0-or-later</project_license>
