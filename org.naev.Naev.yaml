@@ -2,6 +2,9 @@ id: org.naev.Naev
 runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+  - org.freedesktop.Sdk.Extension.llvm21
 command: naev
 rename-appdata-file: org.naev.Naev.metainfo.xml
 finish-args:
@@ -209,6 +212,12 @@ modules:
 
   - name: naev
     buildsystem: meson
+    build-options:
+      prepend-ld-library-path: "/usr/lib/sdk/llvm21/lib"
+      append-path: "/app/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm21/bin"
+      env:
+        LIBCLANG_PATH: "/usr/lib/sdk/llvm21/lib"
+        CARGO_NET_OFFLINE: 'true'
     config-opts:
       - -Dbuildtype=release
       - -Db_lto=true
@@ -219,16 +228,19 @@ modules:
       - /lib/debug
     sources:
       - type: archive
-        url: https://codeberg.org/naev/naev/releases/download/v0.12.6/naev-0.12.6-source.tar.xz
-        sha512: 4d28e9caa26e4c6328b33f17e7c101bc80c6f30540f8d148e7441a9193a3a1a7ee647d501acde7b72b60a9e60ef66774363fdeacefa7c2b7522e278ed44017d2
-        x-checker-data:
-          type: json
-          url: https://codeberg.org/api/v1/repos/naev/naev/releases/latest
-          version-query: .tag_name
-          url-query: .assets[] | select(.name|endswith("-source.tar.xz")) | .browser_download_url
+        url: https://codeberg.org/naev/naev/releases/download/v0.13.0-beta.4/naev-0.13.0-beta.4-source.tar.xz
+        sha512: 83494650192adab24ea7d11fbc8b61fc2fd7f9b321fa038904bda18a13b3322c4ead751d9461eb0b8dc9e37240617b195af497c4bd0888b8b48d871c715c3a76
+#        x-checker-data:
+#          type: json
+#          url: https://codeberg.org/api/v1/repos/naev/naev/releases/latest
+#          version-query: .tag_name
+#          url-query: .assets[] | select(.name|endswith("-source.tar.xz")) | .browser_download_url
       - type: patch
         path: metainfo.patch
-      - type: patch
-        path: disable_ascli.patch
-      - type: patch
-        path: disable_metainfo_test.patch
+      - type: file
+        path: Cargo.lock
+      - cargo-sources.json
+      - type: shell
+        commands:
+          - mkdir -p .cargo
+          - cp -vf cargo/config .cargo/config.toml
