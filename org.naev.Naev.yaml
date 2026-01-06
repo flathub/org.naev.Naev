@@ -127,8 +127,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/btzy/nativefiledialog-extended.git
-        tag: v1.2.1
-        commit: 86d5f2005fe1c00747348a12070fec493ea2407e
+        tag: v1.3.0
+        commit: fc168e8605bfa51aaec22ab0c4e46b9de665a437
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -201,8 +201,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/DrTimothyAldenDavis/SuiteSparse.git
-        tag: v7.11.0
-        commit: b35a1f9318f4bd42085f4b5ea56f29c89d342d4d
+        tag: v7.12.1
+        commit: 901381cd753c004cc2db8e91bdb48f1b51212d3d
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -219,8 +219,8 @@ modules:
       - /lib/debug
     sources:
       - type: archive
-        url: https://codeberg.org/naev/naev/releases/download/v0.12.6/naev-0.12.6-source.tar.xz
-        sha512: 4d28e9caa26e4c6328b33f17e7c101bc80c6f30540f8d148e7441a9193a3a1a7ee647d501acde7b72b60a9e60ef66774363fdeacefa7c2b7522e278ed44017d2
+        url: https://codeberg.org/naev/naev/releases/download/v0.13.0/naev-0.13.0-source.tar.xz
+        sha512: a6e4bcabe480f5bac00db6598f5416b9f484feb61c526970b2dd46ebc7aea1284bf4b228dd49a892ff358df576533acca665fc5e38e3182b5673165dd1a2744c
         x-checker-data:
           type: json
           url: https://codeberg.org/api/v1/repos/naev/naev/releases/latest
