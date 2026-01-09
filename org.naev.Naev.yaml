@@ -2,12 +2,16 @@ id: org.naev.Naev
 runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+  - org.freedesktop.Sdk.Extension.llvm21
 command: naev
 rename-appdata-file: org.naev.Naev.metainfo.xml
 finish-args:
   - --socket=pulseaudio
   - --socket=wayland
   - --socket=fallback-x11
+  - --share=network
   - --device=dri
   - --share=ipc
 
@@ -23,7 +27,6 @@ modules:
       - /bin
       - /include
       - /lib/cmake
-      - /lib/debug
       - /lib/*.a
       - /lib/*.la
       - /lib/pkgconfig
@@ -42,7 +45,6 @@ modules:
     cleanup:
       - /bin
       - /include
-      - /lib/debug
       - /lib/pkgconfig
       - /lib/*.a
       - /lib/*.la
@@ -67,7 +69,6 @@ modules:
     cleanup:
       - /bin
       - /include
-      - /lib/debug
       - /lib/pkgconfig
       - /lib/*.a
       - /lib/*.la
@@ -91,7 +92,6 @@ modules:
     cleanup:
       - /bin
       - /include
-      - /lib/debug
       - /lib/pkgconfig
       - /lib/*.a
       - /lib/*.la
@@ -119,7 +119,6 @@ modules:
       - /bin
       - /include
       - /lib/cmake
-      - /lib/debug
       - /lib/*.a
       - /lib/*.la
       - /lib/pkgconfig
@@ -148,7 +147,6 @@ modules:
       - /bin
       - /include
       - /lib/cmake
-      - /lib/debug
       - /lib/*.a
       - /lib/*.la
       - /lib/pkgconfig
@@ -179,8 +177,6 @@ modules:
           name: PyYAML
           packagetype: sdist
 
-  - shared-modules/SDL2/SDL2_image.json
-
   - name: suitesparse
     buildsystem: cmake-ninja
     config-opts:
@@ -193,7 +189,6 @@ modules:
       - /bin
       - /include
       - /lib/cmake
-      - /lib/debug
       - /lib/*.a
       - /lib/*.la
       - /lib/pkgconfig
@@ -207,20 +202,46 @@ modules:
           type: git
           tag-pattern: ^v([\d.]+)$
 
-  - name: naev
-    buildsystem: meson
-    config-opts:
-      - -Dbuildtype=release
-      - -Db_lto=true
-      - -Dauto_features=enabled
-      - -Ddocs_c=disabled
-      - -Ddocs_lua=disabled
+  - name: rust-bindgen
+    buildsystem: simple
+    build-options:
+      append-path: /usr/lib/sdk/rust-stable/bin
+      env:
+        CARGO_HOME: /run/build/rust-bindgen/cargo
+    sources:
+      - type: git
+        url: https://github.com/rust-lang/rust-bindgen/
+        commit: d874de8d646d9b8a3e7ba2db2bcd52f2fba8f1f5
+        tag: v0.72.1
+      - rust-bindgen.json
+    build-commands:
+      - mv ./cargo/config ./cargo/config.toml
+      - cargo --offline fetch --manifest-path ./Cargo.toml --verbose
+      - cargo --offline build --release --verbose
+      - install -m 755 ./target/release/bindgen /app/bin/bindgen
     cleanup:
-      - /lib/debug
+      - /bin
+      - /include
+      - /lib
+      - /share
+
+  - name: naev
+    buildsystem: simple
+    build-options:
+      prepend-ld-library-path: "/usr/lib/sdk/llvm21/lib"
+      append-path: "/app/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm21/bin"
+      env:
+        LIBCLANG_PATH: "/usr/lib/sdk/llvm21/lib"
+        CARGO_NET_OFFLINE: 'true'
+    build-commands:
+      - meson setup _flatpak_build --prefix=/app -Dbuildtype=release -Db_lto=false -Dauto_features=enabled -Ddocs_c=disabled -Ddocs_lua=disabled
+      - cp -vf Cargo.lock _flatpak_build/Cargo.lock
+      - ninja -C _flatpak_build
+      - ninja -C _flatpak_build install
     sources:
       - type: archive
-        url: https://codeberg.org/naev/naev/releases/download/v0.12.6/naev-0.12.6-source.tar.xz
-        sha512: 4d28e9caa26e4c6328b33f17e7c101bc80c6f30540f8d148e7441a9193a3a1a7ee647d501acde7b72b60a9e60ef66774363fdeacefa7c2b7522e278ed44017d2
+        url: https://codeberg.org/naev/naev/releases/download/v0.13.1/naev-0.13.1-source.tar.xz
+        sha512: f4faea7314f076ae0076a01a18525d37bee716a8fa23e99b77597c2420c2b46290aa6d31a561e8e5edfacb14bdb3c96e3b2d0f7d5bd3164d045f15a677be2294
         x-checker-data:
           type: json
           url: https://codeberg.org/api/v1/repos/naev/naev/releases/latest
@@ -229,6 +250,15 @@ modules:
       - type: patch
         path: metainfo.patch
       - type: patch
-        path: disable_ascli.patch
+        path: fix-arm-type-mismatch.patch
       - type: patch
-        path: disable_metainfo_test.patch
+        path: fix-arm-font-type-mismatch.patch
+      - type: file
+        path: Cargo.lock
+      - cargo-sources.json
+      - type: shell
+        commands:
+          - mkdir -p _flatpak_build/.cargo _flatpak_build/cargo
+          - cp -vf cargo/config _flatpak_build/.cargo/config.toml
+          - mv cargo/vendor _flatpak_build/cargo
+          

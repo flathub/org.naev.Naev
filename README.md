@@ -9,4 +9,4 @@
 1. Clone this repo
 2. Install flatpak and flatpak-builder for your distro
 3. Run the build script with: `./local-build.sh`
-4. Install the test build with: `flatpak install ./org.naev.Naev.flatpak`
+4. Install the test build with: `flatpak install --user ./org.naev.Naev.flatpak`
