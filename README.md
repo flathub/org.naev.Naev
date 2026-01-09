@@ -8,7 +8,7 @@
 ### Build the Flatpak locally
 1. Clone this repo
 2. Install flatpak and flatpak-builder for your distro
-3. Run the build script with: `./local-build.sh`
+3. Run the build script with: `./local-build.sh` (or `./local-build.sh --debug` for a debug build)
 4. Install the test build with: `flatpak install --user ./org.naev.Naev.flatpak`
 
 ### Updating Rust Dependencies
