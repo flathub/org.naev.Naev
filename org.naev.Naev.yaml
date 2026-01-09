@@ -137,18 +137,18 @@ modules:
     config-opts:
       - -DCMAKE_INSTALL_PREFIX=/app
       - -DDYNAMIC_ARCH=ON
-      - -DDYNAMIC_OLDER=ON
+      - -DDYNAMIC_OLDER=OFF
       - -DBUILD_STATIC_LIBS=OFF
       - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_WITHOUT_LAPACK=OFF
       - -DC_LAPACK=ON
       - -DUSE_OPENMP=OFF
-      - -DNO_SME=ON
       - -DBUILD_TESTING=OFF
     build-options:
       arch:
         aarch64:
           config-opts:
+            - -DDYNAMIC_ARCH=OFF
             - -DTARGET=ARMV8
     cleanup:
       - /bin
