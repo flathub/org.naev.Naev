@@ -136,13 +136,13 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_INSTALL_PREFIX=/app
-      - -DDYNAMIC_ARCH=OFF
-      - -DDYNAMIC_OLDER=OFF
+      - -DDYNAMIC_ARCH=ON
+      - -DDYNAMIC_OLDER=ON
       - -DBUILD_STATIC_LIBS=OFF
       - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_WITHOUT_LAPACK=OFF
       - -DC_LAPACK=ON
-      - -DUSE_OPENMP=ON
+      - -DUSE_OPENMP=OFF
     cleanup:
       - /bin
       - /include
