@@ -143,6 +143,13 @@ modules:
       - -DBUILD_WITHOUT_LAPACK=OFF
       - -DC_LAPACK=ON
       - -DUSE_OPENMP=OFF
+      - -DNO_SME=ON
+      - -DBUILD_TESTING=OFF
+    build-options:
+      arch:
+        aarch64:
+          config-opts:
+            - -DTARGET=ARMV8
     cleanup:
       - /bin
       - /include
