@@ -10,3 +10,13 @@
 2. Install flatpak and flatpak-builder for your distro
 3. Run the build script with: `./local-build.sh`
 4. Install the test build with: `flatpak install --user ./org.naev.Naev.flatpak`
+
+### Updating Rust Dependencies
+The Rust dependencies are vendored for the Flatpak build. To update them:
+1. Download the updated `Cargo.lock` from the latest release action for the version you want to update on [Codeberg](https://codeberg.org/naev/naev/actions?workflow=naev_release.yml).
+2. Replace the `Cargo.lock` in this repository with the downloaded one.
+3. Run the source generation script to update `cargo-sources.json`:
+   ```bash
+   ./gen-sources.sh
+   ```
+4. Commit both `Cargo.lock` and `cargo-sources.json`.
