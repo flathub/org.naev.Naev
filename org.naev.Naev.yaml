@@ -250,10 +250,6 @@ modules:
           url-query: .assets[] | select(.name|endswith("-source.tar.xz")) | .browser_download_url
       - type: patch
         path: metainfo.patch
-      - type: patch
-        path: fix-arm-type-mismatch.patch
-      - type: patch
-        path: fix-arm-font-type-mismatch.patch
       - type: file
         path: Cargo.lock
       - cargo-sources.json
