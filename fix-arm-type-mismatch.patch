@@ -1,0 +1,11 @@
+--- a/src/audio/src/events.rs	2026-01-03 04:44:15.000000000 -0500
++++ b/src/audio/src/events.rs	2026-01-08 20:08:52.542479025 -0500
+@@ -94,7 +94,7 @@
+             (events.alEventControlSOFT)(
+                 events_data.len() as ALint,
+                 events_data.as_ptr(),
+-                enable as i8,
++                enable as ALboolean,
+             );
+         },
+         None => warn!("Events not enabled"),
