@@ -137,12 +137,19 @@ modules:
     config-opts:
       - -DCMAKE_INSTALL_PREFIX=/app
       - -DDYNAMIC_ARCH=OFF
-      - -DDYNAMIC_OLDER=OFF
+      - -DTARGET=SANDYBRIDGE
       - -DBUILD_STATIC_LIBS=OFF
       - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_WITHOUT_LAPACK=OFF
-      - -DC_LAPACK=ON
-      - -DUSE_OPENMP=ON
+      - -DUSE_OPENMP=OFF
+      - -DBUILD_TESTING=OFF
+    build-options:
+      arch:
+        aarch64:
+          config-opts:
+            - -DTARGET=ARMV8
+            - -DNO_SVE=ON
+            - -DNO_SME=ON
     cleanup:
       - /bin
       - /include
@@ -217,8 +224,8 @@ modules:
     build-commands:
       - mv ./cargo/config ./cargo/config.toml
       - cargo --offline fetch --manifest-path ./Cargo.toml --verbose
-      - cargo --offline build --release --verbose
-      - install -m 755 ./target/release/bindgen /app/bin/bindgen
+      - cargo --offline build ${CARGO_RELEASE_FLAG---release} --verbose
+      - install -m 755 ./target/${NAEV_BUILDTYPE:-release}/bindgen /app/bin/bindgen
     cleanup:
       - /bin
       - /include
@@ -234,7 +241,7 @@ modules:
         LIBCLANG_PATH: /usr/lib/sdk/llvm21/lib
         CARGO_NET_OFFLINE: 'true'
     build-commands:
-      - meson setup _flatpak_build --prefix=/app -Dbuildtype=release -Db_lto=false
+      - meson setup _flatpak_build --prefix=/app -Dbuildtype=${NAEV_BUILDTYPE:-release} -Db_lto=false
         -Dauto_features=enabled -Ddocs_c=disabled -Ddocs_lua=disabled
       - cp -vf Cargo.lock _flatpak_build/Cargo.lock
       - ninja -C _flatpak_build

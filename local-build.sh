@@ -20,6 +20,32 @@ check_command() {
     echo "$cmd is installed."
 }
 
+# Default build settings
+BUILD_TYPE="release"
+CARGO_RELEASE_FLAG="--release"
+
+# Parse arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -d|--debug)
+            BUILD_TYPE="debug"
+            CARGO_RELEASE_FLAG=""
+            echo "Debug build enabled."
+            shift
+            ;;
+        -h|--help)
+            echo "Usage: $0 [options]"
+            echo "Options:"
+            echo "  -d, --debug    Build in debug mode"
+            echo "  -h, --help     Show this help message"
+            exit 0
+            ;;
+        *)
+            error "Unknown parameter passed: $1"
+            ;;
+    esac
+done
+
 # Check if flatpak is installed
 check_command "flatpak"
 
@@ -61,8 +87,22 @@ rm -rf _build _repo
 mkdir _build _repo
 
 # Build the Flatpak
-echo "Building the Flatpak..."
-flatpak-builder --ccache --force-clean --default-branch="$BRANCH" _build org.naev.Naev.yaml --repo=_repo || error "flatpak-builder failed"
+echo "Building the Flatpak ($BUILD_TYPE)..."
+
+# Create a temporary manifest to inject build settings
+# This is necessary because flatpak-builder does not have a CLI flag to pass environment variables
+MANIFEST_BUILD="_build_org.naev.Naev.yaml"
+trap "rm -f $MANIFEST_BUILD" EXIT
+
+# We use sed to replace the placeholders in the manifest
+# - NAEV_BUILDTYPE: debug or release
+# - CARGO_RELEASE_FLAG: empty for debug, --release for release
+sed -e "s/\${NAEV_BUILDTYPE:-release}/$BUILD_TYPE/g" \
+    -e "s/\${CARGO_RELEASE_FLAG---release}/$CARGO_RELEASE_FLAG/g" \
+    org.naev.Naev.yaml > "$MANIFEST_BUILD"
+
+flatpak-builder --ccache --force-clean --default-branch="$BRANCH" \
+    _build "$MANIFEST_BUILD" --repo=_repo || error "flatpak-builder failed"
 
 # Bundle the Flatpak
 echo "Bundling the Flatpak..."
