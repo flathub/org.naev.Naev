@@ -160,8 +160,8 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://github.com/OpenMathLib/OpenBLAS/releases/download/v0.3.30/OpenBLAS-0.3.30.tar.gz
-        sha512: c726ced2d3e6ebd3ddcd0b13c255bb43fae8c12d2aec15e9ef992b0bc7099996c02cd284ccaaa7b5fac3f23f280b098063dd60f521d97a68dc183ab192fcccdb
+        url: https://github.com/OpenMathLib/OpenBLAS/releases/download/v0.3.31/OpenBLAS-0.3.31.tar.gz
+        sha512: 703b84c476c148a0922a04b1c33c9c4c452f478d608d93e59204b8f0f2c516344301ff0a4dbb3750a2449db0d28cc2df001c295898e859b41ecb8381f9c2eab8
         x-checker-data:
           type: json
           url: https://api.github.com/repos/OpenMathLib/OpenBLAS/releases/latest
@@ -241,8 +241,8 @@ modules:
         LIBCLANG_PATH: /usr/lib/sdk/llvm21/lib
         CARGO_NET_OFFLINE: 'true'
     build-commands:
-      - meson setup _flatpak_build --prefix=/app -Dbuildtype=${NAEV_BUILDTYPE:-release} -Db_lto=false
-        -Dauto_features=enabled -Ddocs_c=disabled -Ddocs_lua=disabled
+      - meson setup _flatpak_build --prefix=/app -Dbuildtype=${NAEV_BUILDTYPE:-release}
+        -Db_lto=false -Dauto_features=enabled -Ddocs_c=disabled -Ddocs_lua=disabled
       - cp -vf Cargo.lock _flatpak_build/Cargo.lock
       - ninja -C _flatpak_build
       - ninja -C _flatpak_build install
