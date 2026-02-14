@@ -34,8 +34,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/commonmark/cmark.git
-        tag: 0.31.1
-        commit: bb3678d7a73cb02d35c8876ecd097072636200a8
+        tag: 0.31.2
+        commit: eec0eeba6d31189fd828314576494566d539b1e3
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
@@ -203,8 +203,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/DrTimothyAldenDavis/SuiteSparse.git
-        tag: v7.12.1
-        commit: 901381cd753c004cc2db8e91bdb48f1b51212d3d
+        tag: v7.12.2
+        commit: 42151688813c45846a597edcb601435a0e38f3dd
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
