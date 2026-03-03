@@ -34,8 +34,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/commonmark/cmark.git
-        tag: 0.31.1
-        commit: bb3678d7a73cb02d35c8876ecd097072636200a8
+        tag: 0.31.2
+        commit: eec0eeba6d31189fd828314576494566d539b1e3
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
@@ -203,8 +203,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/DrTimothyAldenDavis/SuiteSparse.git
-        tag: v7.12.1
-        commit: 901381cd753c004cc2db8e91bdb48f1b51212d3d
+        tag: v7.12.2
+        commit: 42151688813c45846a597edcb601435a0e38f3dd
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -248,8 +248,8 @@ modules:
       - ninja -C _flatpak_build install
     sources:
       - type: archive
-        url: https://codeberg.org/naev/naev/releases/download/v0.13.2/naev-0.13.2-source.tar.xz
-        sha512: ccb9dc8b92186ccf777be643e55a947c0026039f1f8c139cd3f6bb1310a83a3a53358d5ea99b172690a62c4aefb1bf15d5b6a93daf8cd2eb912b1a6866a07b48
+        url: https://codeberg.org/naev/naev/releases/download/v0.13.3/naev-0.13.3-source.tar.xz
+        sha512: 67c9b5674db9d19e4f0d8d26fd81647a2dbdc70e628151738c18e96600be3196d946ad67f65c41f73828f2c0a6b2b9350fb1ad80f3ad4fb749e0a9feeaf099ae
         x-checker-data:
           type: json
           url: https://codeberg.org/api/v1/repos/naev/naev/releases/latest
