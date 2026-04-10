@@ -98,8 +98,8 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_6_1/libunibreak-6.1.tar.gz
-        sha512: 8ffde29a9b90ddcbfabb61d7302ffe3b17473cd6d30fe1a4403d857e6191291d7e7a6f23bde58654155ed95f4a0f31e082cdf424a82da46722a811291ef38c2f
+        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_7_0/libunibreak-7.0.tar.gz
+        sha512: 2dec8aa5788486dcbe1f676d31a103f7a3f253a2bf4af7772b3f3019667b352aa04aae369e0838ce6d554b207a2d555738f3510bb1cfec65adcc8c4164aeb00b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/adah1972/libunibreak/releases/latest
