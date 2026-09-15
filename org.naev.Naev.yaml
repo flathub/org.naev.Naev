@@ -98,8 +98,8 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_7_0/libunibreak-7.0.tar.gz
-        sha512: 2dec8aa5788486dcbe1f676d31a103f7a3f253a2bf4af7772b3f3019667b352aa04aae369e0838ce6d554b207a2d555738f3510bb1cfec65adcc8c4164aeb00b
+        url: https://github.com/adah1972/libunibreak/releases/download/libunibreak_8_0/libunibreak-8.0.tar.gz
+        sha512: 9d9bb3b1d7260254988c74e64944d45ebe56dd25e4fac1cf155991dec1786d99a767105420b7a01c01705ee625ae19c66d0c4b18b88b8a4cc36882dcb73036c4
         x-checker-data:
           type: json
           url: https://api.github.com/repos/adah1972/libunibreak/releases/latest
@@ -203,8 +203,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/DrTimothyAldenDavis/SuiteSparse.git
-        tag: v7.13.0
-        commit: c932e2e018195bdea89f012d9058d3d2b8907f70
+        tag: v7.14.1
+        commit: e202a5bcef55f5a780c26830ebd6ff13af193baf
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
