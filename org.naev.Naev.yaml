@@ -1,10 +1,10 @@
 id: org.naev.Naev
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
-  - org.freedesktop.Sdk.Extension.llvm21
+  - org.freedesktop.Sdk.Extension.llvm22
 command: naev
 rename-appdata-file: org.naev.Naev.metainfo.xml
 finish-args:
@@ -212,10 +212,10 @@ modules:
   - name: naev
     buildsystem: simple
     build-options:
-      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
-      append-path: /app/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm22/lib
+      append-path: /app/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm22/bin
       env:
-        LIBCLANG_PATH: /usr/lib/sdk/llvm21/lib
+        LIBCLANG_PATH: /usr/lib/sdk/llvm22/lib
         CARGO_NET_OFFLINE: 'true'
     build-commands:
       - meson setup _flatpak_build --prefix=/app -Dbuildtype=${NAEV_BUILDTYPE:-release}

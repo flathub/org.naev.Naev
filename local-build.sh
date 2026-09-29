@@ -3,7 +3,7 @@
 set -e  # Exit immediately if a command exits with a non-zero status
 
 BRANCH="test"
-RUNTIME_VERSION="${RUNTIME_VERSION:-25.08}"
+RUNTIME_VERSION="${RUNTIME_VERSION:-26.08}"
 
 # Function to print error messages
 error() {
@@ -57,7 +57,7 @@ REQUIRED_FLATPAK_PACKAGES=(
     "org.freedesktop.Platform//${RUNTIME_VERSION}"
     "org.freedesktop.Sdk//${RUNTIME_VERSION}"
     "org.freedesktop.Sdk.Extension.rust-stable//${RUNTIME_VERSION}"
-    "org.freedesktop.Sdk.Extension.llvm21//${RUNTIME_VERSION}"
+    "org.freedesktop.Sdk.Extension.llvm22//${RUNTIME_VERSION}"
 )
 
 # Function to check if a Flatpak package is installed
