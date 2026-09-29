@@ -126,8 +126,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/btzy/nativefiledialog-extended.git
-        tag: v1.3.0
-        commit: fc168e8605bfa51aaec22ab0c4e46b9de665a437
+        tag: v1.4.0
+        commit: 5381ddbf0b33d3b7b4c5679b0e796d77848a158d
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
